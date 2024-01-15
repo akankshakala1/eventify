@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+djangorestframework-simplejwt = "*"
+whitenoise = "*"
+django-debug-toolbar = "*"
+python-dotenv = "*"
+google-auth-oauthlib = "*"
+oauthlib = "*"
+google-auth = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "*"
