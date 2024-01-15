@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% block content %}
+<div class="container">
+  <h2>Home</h2>
+
+  {% if not events %}
+  <div class="alert alert-warning" role="alert">No Events at the moment!</div>
+  {% else %} {% for event in events %}
+
+  <div class="card mb-2">
+    <div class="card-body">
+      <a href="{% url 'event_details' event.id %}"
+        ><h5 class="card-title">{{ event.title }}</h5></a
+      >
+      <p class="card-text">{{ event.organizer }}</p>
+      <p class="small text-muted fst-italic">Date: {{ event.date }}</p>
+    </div>
+  </div>
+
+  {% endfor %} {% endif %}
+</div>
+
+{% endblock %}

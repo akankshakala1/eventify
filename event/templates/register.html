@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <h2>Login</h2>
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form
+        method="post"
+        action="{% url 'register' %}"
+        class="needs-validation p-4 p-md-5 border rounded-3 bg-light"
+      >
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="{{ form.username.id_for_label }}" class="control-label"
+            >Username:</label
+          >
+          {{ form.username }}
+        </div>
+
+        <br />
+
+        <div class="mb-3">
+          <label for="{{ form.password1.id_for_label }}" class="control-label"
+            >Password:</label
+          >
+          {{ form.password1 }}
+        </div>
+
+        {% if form.error_messages %}
+        <div class="text-danger mb-3">
+          {{ form.error_messages.password_mismatch }}
+        </div>
+        {% endif %}
+        <div class="mb-3">
+          <label for="{{ form.password2.id_for_label }}" class="control-label"
+            >Confirm Password:</label
+          >
+          {{ form.password2 }}
+        </div>
+
+        <br />
+        <div class="form-group row justify-content-end">
+          <button type="submit" class="btn btn-primary">Signup</button>
+        </div>
+
+        <hr class="my-4" />
+        <small class="text-muted">
+          Already have an account?
+          <a href="{% url 'login' %}" class="text-right">Login</a>
+        </small>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+</div>

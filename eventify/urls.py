@@ -16,7 +16,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from event.views import ( UserLoginView, UserLogoutView ,
+                        IndexView,CreateEventView,
+                     ProfileView,SearchView,EventListView,
+                     UserRegistrationView ,HomeView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+        path('', IndexView.as_view(), name='index'),
+        path('login/', UserLoginView.as_view(), name='login'),
+        path('logout/', UserLogoutView.as_view(), name='logout'),
+        path('create/', CreateEventView.as_view(), name='create_event'),
+        path('profile/', ProfileView.as_view(), name='profile'),
+        path('search/', SearchView.as_view(), name='search'),
+        path('event_details/<int:event_id>/', EventListView.as_view(), name='event_details'),
+        path('register/', UserRegistrationView.as_view(), name='register'),
+        path('home/', HomeView.as_view(), name='home'),
+
+
+
+
+
+
+
+
+
+
 ]
+
+
