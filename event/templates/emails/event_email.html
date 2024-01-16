@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Invitation</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    "
+  >
+    <table
+      width="100%"
+      bgcolor="#f2f2f2"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+    >
+      <tr>
+        <td style="padding: 20px; text-align: center">
+          <h1
+            style="color: rgb(81, 255, 0); font-size: 24px; margin-bottom: 20px"
+          >
+            Event Invitation
+          </h1>
+          <div
+            style="
+              background-color: #fff;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <p style="font-size: 16px; color: #333; margin: 0">
+              <strong>Event Name:</strong> {{ event.title }}
+            </p>
+            <p style="font-size: 16px; color: #333; margin: 0">
+              <strong>Date:</strong> {{ event.date }}
+            </p>
+            <p style="font-size: 16px; color: #333; margin: 0">
+              <strong>Location:</strong> {{ event.location }}
+            </p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

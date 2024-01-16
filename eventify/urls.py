@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 from event.views import ( UserLoginView, UserLogoutView ,
                         IndexView,CreateEventView,
                      ProfileView,SearchView,EventListView,
-                     UserRegistrationView ,HomeView
+                     UserRegistrationView ,HomeView,InvitationCreateView,EventDetailView
 )
 
 urlpatterns = [
@@ -30,9 +31,13 @@ urlpatterns = [
         path('create/', CreateEventView.as_view(), name='create_event'),
         path('profile/', ProfileView.as_view(), name='profile'),
         path('search/', SearchView.as_view(), name='search'),
-        path('event_details/<int:event_id>/', EventListView.as_view(), name='event_details'),
+        path('event_details/<int:event_id>/', EventDetailView.as_view(), name='event_details'),
         path('register/', UserRegistrationView.as_view(), name='register'),
         path('home/', HomeView.as_view(), name='home'),
+        path('invite/create', InvitationCreateView.as_view(), name='invitation_create'),
+        path('invite/success/', TemplateView.as_view(template_name='invitation_create_success.html'), name='invitation_create_success'),
+        path('logout/', UserLogoutView.as_view(), name='logout'),
+
 
 
 

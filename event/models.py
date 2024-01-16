@@ -17,15 +17,20 @@ class Location(models.Model):
     name = models.CharField(max_length=100)
     address = models.TextField()
 
+    def __str__(self):
+        return f'{self.name} - {self.address}'
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateTimeField()
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE , related_name='location_events')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="events")
     organizer = models.ForeignKey(User, related_name='organized_events', on_delete=models.CASCADE)
     attendees = models.ManyToManyField(User, related_name='attended_events', blank=True)
+
+    def __str__(self):
+        return f'{self.title} - {self.description}'
 
 class Invitation(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')

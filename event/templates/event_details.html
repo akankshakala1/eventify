@@ -1,28 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container">
-        <h2>event Detail</h2>
+        <h2>Event Detail</h2>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ event.title }}</h5>
                 <p class="card-text">{{ event.description }}</p>
+                <p class="card-text">{{ event.date }}</p>
                 <p class="card-text">{{ event.location }}</p>
 
-               <div class="d-flex justify-content-end">
-                 <div class="ms-auto ">
-                {% if user.is_authenticated and user == event.organizer %}
-                    <!-- <a href="{% url 'edit_event' event.id %}" class="btn btn-primary">Edit</a> -->
-                    <!-- <form method="event" action="{% url 'delete_event' event.id %}" class="ms-auto d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger"
-                            onmouseover="this.style.backgroundColor='#c82333'"
-                            onmouseout="this.style.backgroundColor='#dc3545'">
-                            Delete
-                        </button>
-                    </form> -->
-                {% endif %}
-            </div>
-               </div>
+               
         </div>
 </div>
   </div>
