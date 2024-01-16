@@ -2,8 +2,35 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,AbstractUser, Group, Permission
 
+
+
+class RegularUser(AbstractUser):
+    groups = models.ManyToManyField(Group, related_name='regularuser_set', blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name='regularuser_set', blank=True)
+    bio = models.TextField(blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+
+    class Meta:
+        permissions = (("can_do_view_events", "view events"),)
+
+    def __str__(self):
+        return self.username
+
+class OrganizerUser(AbstractUser):
+    organization = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    website = models.URLField(blank=True)
+    groups = models.ManyToManyField(Group, related_name='organizeruser_set', blank=True)
+    user_permissions = models.ManyToManyField(Permission, related_name='organizeruser_set', blank=True)
+    
+    class Meta:
+        permissions = (("can_manage_events", "Can manage events"),)  
+
+
+    def __str__(self):
+        return self.username
 
 
 class Category(models.Model):
