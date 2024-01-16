@@ -21,6 +21,9 @@
 5. [API Root](#5-api-root)
 6. [Settings and Configurations](#6-settings-and-configurations)
 7. [Project Structure](#7-project-structure)
+8. [Project Execution](#8-project-execution)
+   1. [Dependencies](#81-dependencies)
+   2. [Running the project](#82-running-the-project)
 
 ---
 
@@ -406,3 +409,43 @@ The above commands must be against the root project folder (eventify)
 
 
 ```
+
+---
+
+## 8. Project Execution
+
+---
+
+### 8.1 Dependencies
+
+The project uses pipenv as a virtual environment management tool
+pipenv must first be installed. To install pipenv, run
+
+```bash
+pip install pipenv
+```
+
+Once this is done, installing the dependencies is easy , just run
+
+```bash
+pipenv install
+```
+
+this will create a virtual environment and install the dependencies present in Pipfile.
+
+Or Ommit the above procedure for creating a virtual environment and run:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 8.2 Running the project
+
+To run the project, under the folder containing file manage.py , open terminal and run
+
+```bash
+python manage.py runserver
+
+```
+
+This will run the server on http://127.0.0.1:8000 . The project also uses google oauth2 authentication and requires the project to be run specifically on port 8000 due to the callback url configuration. If you want the email to work and use specifically your email, head on to [google api console](https://console.cloud.google.com/apis/credentials) and create a new app and create an new OAuth 2.0 Client ID , set up callbasck url to http://127.0.0.1:8000/google_auth/calback and another one that uses ip address , http://127.0.0.1:8000/google_auth/calback then copy the client id , client secret and replace the one in `.env` file in project folder (eventify/) folder .Also , set up an app password for the email you intend to use as the sender during otp creation , Navigate to google settings , enable 2FA , then searh for App password option . If you can't see it , just search it via the search bar on top , click it and under Select the app and device for which you want to generate the app password option , click select app and select Other (Custom name) then set the name as flaskapp.also replace the MAIL_USERNAME and MAIL_PASSWORD in the `sh .env` file in client folder to the one you set on google account settings and you are set to go
