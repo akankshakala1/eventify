@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
+mysqlclient = "*"
+dj-database-url = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
